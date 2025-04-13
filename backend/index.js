@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import courseRoute from  "./routes/course.route.js"
+import userRoute from "./routes/user.route.js"
 import { v2 as cloudinary } from "cloudinary";
 import fileUpload from "express-fileupload"
 const app = express()
@@ -23,7 +24,12 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
+
+// Route
 app.use('/api/vi/course', courseRoute)
+app.use("/api/v1/user", userRoute);
+// app.use("/api/v1/admin", adminRoute);
+// app.use("/api/v1/order", orderRoute);
 // Cloudinary configuration code
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
