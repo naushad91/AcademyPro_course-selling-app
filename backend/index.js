@@ -16,7 +16,7 @@ try {
      console.log(error);
    }
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(
   fileUpload({
     useTempFiles: true,
@@ -26,9 +26,9 @@ app.use(
 app.use('/api/vi/course', courseRoute)
 // Cloudinary configuration code
 cloudinary.config({
-  cloud_name: process.env.cloud_name,
-  api_key: process.env.api_key,
-  api_secret: process.env.api_secret,
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
 app.listen(port, () => {
