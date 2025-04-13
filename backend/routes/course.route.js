@@ -1,10 +1,10 @@
 import express from "express";
 import {
 //   buyCourses,
-//   courseDetails,
+  courseDetails,
   createCourse,
-//   deleteCourse,
-//   getCourses,
+  deleteCourse,
+  getCourses,
   updateCourse
 } from "../controllers/course.controller.js";
 // import userMiddleware from "../middlewares/user.mid.js";
@@ -14,9 +14,9 @@ const router = express.Router();
 
 router.post("/create",  createCourse);
 router.put("/update/:courseId", updateCourse);
-// router.delete("/delete/:courseId",  deleteCourse);
-// router.get("/courses", getCourses);
-// router.get("/:courseId", courseDetails);
+router.delete("/delete/:courseId",  deleteCourse);
+router.get("/courses", getCourses);
+router.get("/:courseId", courseDetails);
 
 // router.post("/buy/:courseId", userMiddleware, buyCourses);
 
