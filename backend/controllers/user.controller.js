@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { z } from "zod";
 import config from "../config.js";
-// import { Purchase } from "../models/purchase.model.js";
+import { Purchase } from "../models/purchase.model.js";
 import { Course } from "../models/course.model.js";
 
 
@@ -96,24 +96,24 @@ export const logout = (req, res) => {
   }
 };
 
-// export const purchases = async (req, res) => {
-//   const userId = req.userId;
+export const purchases = async (req, res) => {
+  const userId = req.userId;
 
-//   try {
-//     const purchased = await Purchase.find({ userId });
+  try {
+    const purchased = await Purchase.find({ userId });
 
-//     let purchasedCourseId = [];
+    let purchasedCourseId = [];
 
-//     for (let i = 0; i < purchased.length; i++) {
-//       purchasedCourseId.push(purchased[i].courseId);
-//     }
-//     const courseData = await Course.find({
-//       _id: { $in: purchasedCourseId },
-//     });
+    for (let i = 0; i < purchased.length; i++) {
+      purchasedCourseId.push(purchased[i].courseId);
+    }
+    const courseData = await Course.find({
+      _id: { $in: purchasedCourseId },
+    });
 
-//     res.status(200).json({ purchased, courseData });
-//   } catch (error) {
-//     res.status(500).json({ errors: "Error in purchases" });
-//     console.log("Error in purchase", error);
-//   }
-// };
+    res.status(200).json({ purchased, courseData });
+  } catch (error) {
+    res.status(500).json({ errors: "Error in purchases" });
+    console.log("Error in purchase", error);
+  }
+};

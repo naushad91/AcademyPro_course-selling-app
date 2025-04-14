@@ -1,4 +1,5 @@
 import { Course } from "../models/course.model.js";
+import { Purchase } from "../models/purchase.model.js";
 import { v2 as cloudinary } from "cloudinary";
 
 export const createCourse = async (req, res) => {
@@ -88,7 +89,7 @@ export const createCourse = async (req, res) => {
   };
   
 
-  export const deleteCourse = async (req, res) => {
+export const deleteCourse = async (req, res) => {
     // const adminId = req.adminId;
     const { courseId } = req.params;
     try {
@@ -108,7 +109,7 @@ export const createCourse = async (req, res) => {
     }
   };
 
-  export const getCourses = async (req, res) => {
+export const getCourses = async (req, res) => {
     try {
       const courses = await Course.find({});
       res.status(201).json({ courses });
@@ -119,7 +120,7 @@ export const createCourse = async (req, res) => {
   };
 
   
-  export const courseDetails = async (req, res) => {
+export const courseDetails = async (req, res) => {
     const { courseId } = req.params;
     try {
       const course = await Course.findById(courseId);
@@ -130,5 +131,46 @@ export const createCourse = async (req, res) => {
     } catch (error) {
       res.status(500).json({ errors: "Error in getting course details" });
       console.log("Error in course details", error);
+    }
+  };
+
+
+  export const buyCourses = async (req, res) => {
+    console.log("buycourse")
+    const { userId } = req;
+    const { courseId } = req.params;
+  
+    try {
+      const course = await Course.findById(courseId);
+      if (!course) {
+        return res.status(404).json({ errors: "Course not found" });
+      }
+      const existingPurchase = await Purchase.findOne({ userId, courseId });
+      if (existingPurchase) {
+        return res
+          .status(400)
+          .json({ errors: "User has already purchased this course" });
+      }
+  
+      // // stripe payment code goes here!!
+      // const amount = course.price;
+      // const paymentIntent = await stripe.paymentIntents.create({
+      //   amount: amount,
+      //   currency: "usd",
+      //   payment_method_types: ["card"],
+      // });
+   
+      const newPurchase=new Purchase({userId,courseId})
+      await newPurchase.save();
+
+      res.status(201).json({
+        message: "Course purchased successfully",
+        newPurchase
+        // course,
+        // clientSecret: paymentIntent.client_secret,
+      });
+    } catch (error) {
+      res.status(500).json({ errors: "Error in course buying" });
+      console.log("error in course buying ", error);
     }
   };

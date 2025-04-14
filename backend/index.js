@@ -26,7 +26,7 @@ app.use(
 );
 
 // Route
-app.use('/api/vi/course', courseRoute)
+app.use("/api/v1/course", courseRoute)
 app.use("/api/v1/user", userRoute);
 // app.use("/api/v1/admin", adminRoute);
 // app.use("/api/v1/order", orderRoute);
