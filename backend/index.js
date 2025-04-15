@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import courseRoute from  "./routes/course.route.js"
 import userRoute from "./routes/user.route.js"
+import adminRoute from "./routes/admin.route.js"
 import { v2 as cloudinary } from "cloudinary";
 import fileUpload from "express-fileupload"
 const app = express()
@@ -28,7 +29,7 @@ app.use(
 // Route
 app.use("/api/v1/course", courseRoute)
 app.use("/api/v1/user", userRoute);
-// app.use("/api/v1/admin", adminRoute);
+app.use("/api/v1/admin", adminRoute);
 // app.use("/api/v1/order", orderRoute);
 // Cloudinary configuration code
 cloudinary.config({

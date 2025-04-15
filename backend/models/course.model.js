@@ -22,7 +22,11 @@ const courseSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-  }
+  },
+  creatorId: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+  },
 
 });
 

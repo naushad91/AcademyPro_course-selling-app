@@ -3,7 +3,7 @@ import { Purchase } from "../models/purchase.model.js";
 import { v2 as cloudinary } from "cloudinary";
 
 export const createCourse = async (req, res) => {
-   
+  const adminId = req.adminId;
     const { title, description, price } = req.body;
     console.log(title, description, price);
   
@@ -39,7 +39,7 @@ export const createCourse = async (req, res) => {
           public_id: cloud_response.public_id,
           url: cloud_response.url,
         },
-        // creatorId: adminId,
+        creatorId: adminId,
       };
       const course = await Course.create(courseData);
       res.json({
@@ -53,7 +53,7 @@ export const createCourse = async (req, res) => {
   };
 
   export const updateCourse = async (req, res) => {
-    // const adminId = req.adminId;
+    const adminId = req.adminId;
     const { courseId } = req.params;
     const { title, description, price, image } = req.body;
     try {
@@ -64,7 +64,7 @@ export const createCourse = async (req, res) => {
       const course = await Course.findOneAndUpdate(
         {
           _id: courseId,
-          // creatorId: adminId,
+          creatorId: adminId,
         },
         {
           title,
@@ -90,12 +90,12 @@ export const createCourse = async (req, res) => {
   
 
 export const deleteCourse = async (req, res) => {
-    // const adminId = req.adminId;
+    const adminId = req.adminId;
     const { courseId } = req.params;
     try {
       const course = await Course.findOneAndDelete({
         _id: courseId,
-        // creatorId: adminId,
+        creatorId: adminId,
       });
       if (!course) {
         return res
