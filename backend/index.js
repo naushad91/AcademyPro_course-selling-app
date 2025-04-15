@@ -6,6 +6,7 @@ import userRoute from "./routes/user.route.js"
 import adminRoute from "./routes/admin.route.js"
 import { v2 as cloudinary } from "cloudinary";
 import fileUpload from "express-fileupload"
+import cookieParser from "cookie-parser"
 const app = express()
 dotenv.config()
 const port = process.env.PORT||3000
@@ -18,7 +19,7 @@ try {
      console.log(error);
    }
 app.use(express.json());
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use(
   fileUpload({
     useTempFiles: true,

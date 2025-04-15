@@ -76,11 +76,11 @@ export const createCourse = async (req, res) => {
           },
         }
       );
-      // if (!course) {
-      //   return res
-      //     .status(404)
-      //     .json({ errors: "can't update, created by other admin" });
-      // }
+      if (!course) {
+        return res
+          .status(404)
+          .json({ errors: "can't update, created by other admin" });
+      }
       res.status(201).json({ message: "Course updated successfully", course });
     } catch (error) {
       res.status(500).json({ errors: "Error in course updating" });
