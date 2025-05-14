@@ -1,9 +1,32 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import { FaBars, FaTimes, FaSearch, FaShoppingCart } from 'react-icons/fa';
 
+// import toast from "react-hot-toast";
+// import { Link, useNavigate } from "react-router-dom";
+// import { BACKEND_URL } from "../utils/utils";
+
+import axios from "axios";
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get("http://localhost:5001/api/v1/course/courses",
+        );
+        console.log(response.data);
+        // setCourses(response.data.courses);
+        // setLoading(false);
+      } catch (error) {
+        console.log("error in fetchCourses ", error);
+      }
+    };
+    fetchCourses();
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-[#191919] text-white font-[Poppins]">
@@ -115,15 +138,25 @@ function Home() {
             Discover top-rated courses in development, design, marketing, and more. Start building your future today with Elevate.
           </p>
 
+
+
+
+
+
+
+
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-[#FFAA5A] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#FF785A] transition-all duration-300 transform">
-              Explore Courses
-            </button>
-            <button className="bg-[#FFAA5A] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#FF785A] transition-all duration-300 transform">
-              Course Videos
-            </button>
-          </div>
+  <button className="w-full sm:w-auto bg-[#FFAA5A] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#FF785A] transition-all duration-300 transform">
+    Explore Courses
+  </button>
+  <button className="w-full sm:w-auto bg-[#FFAA5A] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#FF785A] transition-all duration-300 transform">
+    Course Videos
+  </button>
+</div>
+
         </section>
+
+
 
 {/* Features Section */}
 <section className="px-4 md:px-8 py-16 bg-[#191919]">
@@ -218,8 +251,8 @@ function Home() {
 </section>
 
 
-        {/* Footer */}
-        <footer className="my-12 px-4">
+{/* Footer */}
+      <footer className="my-12 px-4">
           <div className="flex flex-col md:flex-row justify-between gap-10 text-center md:text-left">
             {/* Logo & Social */}
             <div className="flex flex-col items-center md:items-start">
@@ -252,9 +285,9 @@ function Home() {
               </ul>
             </div>
           </div>
-        </footer>
-      </div>
+      </footer>
     </div>
+  </div>
   );
 }
 
