@@ -37,20 +37,14 @@ This snapshot shows the clean and responsive dashboard of Elevate, designed to e
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** React, Redux, Tailwind CSS
+* **Frontend:** React, Zustsand, Tailwind CSS
 * **Backend:** Node.js, Express.js
 * **Database:** MongoDB (with Mongoose)
 * **Authentication:** JSON Web Tokens (JWT)
-* **Payment Gateway:** Stripe / Razorpay
-* **Deployment:** (Vercel / Netlify for frontend, Render / Railway / Heroku for backend)
-
+* **Payment Gateway:** Stripe 
+* **Deployment:** (Vercel) coming....
 ---
 
-## 📸 Screenshots
-
-> *Add screenshots here showing the student view, instructor dashboard, and payment flow.*
-
----
 
 ## 🧑‍💻 Getting Started
 
@@ -95,7 +89,7 @@ npm start
 
 ## 📈 Impact
 
-This project improves course delivery efficiency by enabling educators to launch learning content independently. It has been structured for scalability, with a focus on usability and secure payments.
+This project enhances course delivery efficiency by empowering educators to independently launch learning content. I am actively working on creating a user-friendly, intuitive UI that simplifies the learning experience, while ensuring the platform is scalable and supports secure payment processing.
 
 ---
 
