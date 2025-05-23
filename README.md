@@ -8,7 +8,15 @@ Elevate is a full-stack EdTech web application designed to simplify the process 
 
 ## 🚀 Live Demo
 
-Coming Soon (or add your deployed URL here)
+🚀 Live Demo & UI Preview
+Live demo is coming soon! Meanwhile, here’s a sneak peek of the current user interface under development:
+
+
+This snapshot shows the clean and responsive dashboard of Elevate, designed to enhance the user experience for both students and instructors.
+![image](https://github.com/user-attachments/assets/5eeeff36-5850-44ed-af24-2ca34b0f71e9)
+![image](https://github.com/user-attachments/assets/f4bbd387-6735-40e4-a0ba-d122bfd111f4)
+
+
 
 ## 🔗 Repository
 
